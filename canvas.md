@@ -1,0 +1,21 @@
+# Canvas 7 Dòng — Checkpoint 1 (CP1)
+**Track:** Track A — VLearn Tutor | **Đề:** A1 · Tối ưu AI Tutor: Trả lời có căn cứ từ tài liệu & Trích dẫn chính xác
+
+---
+
+| # | Mục | Nội dung chi tiết |
+|---|---|---|
+| **1** | **Track + đề** | **Track A · VLearn Tutor — Đề A1:** Tối ưu AI Tutor hiện có: Trả lời có căn cứ, trích dẫn chính xác (`has_citation`) và xử lý câu hỏi ngoài phạm vi/mơ hồ (HAX G10). |
+| **2** | **Job executor** | **Học viên đang học trên slide/tài liệu VLearn** trong buổi học, vừa bôi đen một đoạn kiến thức chưa hiểu để hỏi Trợ giảng AI. |
+| **3** | **Pain một câu** | Khi hỏi để làm rõ đoạn vừa bôi đen, học viên nhận câu trả lời **không có trích dẫn nguồn** (hoặc trích dẫn sai trang), không biết tutor dựa vào đâu để kiểm chứng, dẫn đến mất thời gian tự lật tìm lại slide và có nguy cơ hiểu sai kiến thức bài học. |
+| **4** | **1–2 bằng chứng đầu** | **(1) Data Mining từ `tutor_turns.csv` (13.494 lượt hỏi-đáp thật):**<br>• Có **3.781 / 13.494 lượt (28,02%)** phản hồi tutor hoàn toàn không có trích dẫn (`has_citation = False`); riêng khóa K4 hiện tại là **839 / 3.097 lượt (27,09%)**.<br>• Có **2.198 lượt** học viên đã chủ động bôi đen đoạn trích cụ thể nhưng tutor vẫn trả lời chay không nguồn.<br>• *Mã hội thoại minh chứng:*<br>&nbsp;&nbsp;- `T00009`: Học viên yêu cầu rõ *"Hãy giải thích ngắn gọn LLM là gì và trích dẫn slide"* nhưng tutor trả lời lý thuyết chung, `has_citation = False`.<br>&nbsp;&nbsp;- `T00213`: Học viên chọn Trang 4 để hỏi Slide 4, tutor trích dẫn sai thành `[trang 70]`.<br>&nbsp;&nbsp;- `T10288`, `T10289`, `T10301` (K4): Học viên hỏi bài lab/thuật ngữ, tutor suy đoán chung chung không có căn cứ bài học.<br>• Tutor gần như không thăm dò mức hiểu: chỉ **28 / 13.494 lượt (0,21%)** dùng `ask_probing_question`, trong khi câu hỏi mẫu chiếm **22,73% (3.067 lượt)**.<br>**(2) Khảo sát nhanh trong lớp:** 4/5 học viên được hỏi xác nhận khi tutor đưa câu trả lời dài mà không gắn trang, họ không biết thông tin nằm ở đâu trong slide để note lại hoặc kiểm tra tính chính xác. |
+| **5** | **Lát cắt MỘT CÂU**<br>*(1 user · 1 việc · 1 quyết định AI · 1 kết quả)* | **Học viên đang đọc slide · cần làm rõ đoạn kiến thức vừa bôi đen · AI chỉ trả lời kèm trích dẫn `[trang N]` khi truy xuất được đoạn nguồn phù hợp trong bài giảng, nếu không đủ căn cứ thì từ chối suy đoán, nói rõ lý do và đặt 1 câu hỏi thăm dò để thu hẹp phạm vi · kết quả là câu giải thích súc tích có dẫn nguồn kiểm chứng được hoặc câu hỏi gợi mở đúng trọng tâm.** |
+| **6** | **AI tự làm đến đâu + Lý do · Willing users** | • **Mức độ: Conditional (Có điều kiện)** — Tự động truy xuất bài học và trả lời có trích dẫn trang khi tìm thấy căn cứ tin cậy; tuyệt đối **không tự suy đoán/bịa đặt** khi không có tài liệu nguồn mà phải chuyển sang chế độ từ chối + hỏi lại (HAX G10).<br>• **Lý do (cost-of-error):** Sai kiến thức nền tảng trong khóa học khiến học viên áp dụng sai bài lab/quiz, sửa lại rất tốn thời gian và làm mất niềm tin hoàn toàn vào trợ giảng AI.<br>• **≥3 Willing users ngoài nhóm (đã hỏi và sẵn sàng test prototype):** `[Tên bạn 1 - ví dụ: Nguyễn Văn A]`, `[Tên bạn 2 - ví dụ: Trần Thị B]`, `[Tên bạn 3 - ví dụ: Lê Hoàng C]` (Học viên lớp 3B, phòng E402). |
+| **7** | **Phân công có tên** | • **Nguyễn Xuân Thành** *(Lead)*: Phụ trách Problem Statement, AI Spec (`spec.md`), điều phối chất lượng và Canvas.<br>• **[Tên Thành viên 2]**: Data Mining, trích xuất log bằng chứng từ `tutor_turns.csv`, xây dựng Golden Set 20 case.<br>• **[Tên Thành viên 3]**: Prompt Engineering & Retrieval RAG (System prompt, luật trích dẫn nguồn, guardrail từ chối ngoài phạm vi).<br>• **[Tên Thành viên 4]**: Prototype Web/UI, tích hợp API gọi LLM thật, chuẩn bị kịch bản demo và feedback log. |
+
+---
+
+### Bảng đối chiếu tiêu chí nghiệm thu CP1 (TA checklist)
+- [x] **Lát cắt đúng format MỘT CÂU:** `Học viên đang đọc slide · cần làm rõ đoạn kiến thức vừa bôi đen · AI chỉ trả lời kèm trích dẫn [trang N] khi truy xuất được đoạn nguồn phù hợp... nếu không thì nói rõ lý do và hỏi lại · kết quả là câu giải thích có trích dẫn hoặc câu hỏi gợi mở.`
+- [x] **Có bằng chứng ban đầu đếm được:** 3.781/13.494 turns (28,02%) không có citation, 839/3.097 turns ở K4; có mã turn cụ thể (`T00009`, `T00213`, `T10288`, `T10289`, `T10301`) kiểm chứng được trong 2 phút.
+- [x] **Đủ phân công có tên:** 4 vai trò rõ ràng, mỗi việc một người phụ trách.

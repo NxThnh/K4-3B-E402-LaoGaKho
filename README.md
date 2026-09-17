@@ -4,14 +4,14 @@
 
 ## 👥 Thành viên nhóm & Phân công vai trò
 
-**Lớp:** 3B · **Phòng:** ____ · **Cụm:** ____ · **Track:** ____
+**Lớp:** 3B · **Phòng:** E402 · **Cụm:** ____ · **Track:** A · VLearn Tutor (Đề A1)
 
 | Họ và Tên | Mã Học Viên | Vai trò chính | Phần việc đảm nhiệm trong dự án |
 |---|---|---|---|
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
+| Nguyễn Xuân Thành | [Điền mã HV] | Product Lead & AI Spec | Chịu trách nhiệm JTBD, Problem statement, AI Spec (`spec.md`), Canvas CP1 và điều phối chất lượng chung |
+| [Tên thành viên 2] | [Điền mã HV] | Data & Evidence Mining | Mining chatlog `tutor_turns.csv`, lập bảng kiểm chứng bằng chứng, xây dựng bộ Golden Set 20 case khó |
+| [Tên thành viên 3] | [Điền mã HV] | AI & Prompt Engineer | Thiết kế System Prompt, cơ chế Grounding/Retrieval RAG, bộ lọc trích dẫn nguồn và guardrail chống ảo giác |
+| [Tên thành viên 4] | [Điền mã HV] | Prototype & User Testing | Xây dựng giao diện demo, tích hợp API LLM thật, điều phối thử nghiệm người dùng (validation) và feedback log |
 
 > Nhóm copy nguyên file README này về repo của mình, rồi điền bảng trên. Cột **Phần việc đảm nhiệm** ghi càng cụ thể càng tốt.
 
